@@ -14,7 +14,7 @@ MinutesBot ingests a meeting transcript, summarizes it, extracts action items wi
 | Owner detection | ⚠️ Partial — works when speaker explicitly says "I'll do X" |
 | Due date extraction | ⚠️ Weak — defaults to "end of week" when no date is stated |
 | Planner/Jira integration | ❌ Mocked — `integrator.py` logs the payload instead of calling Microsoft Graph API |
-| Reminders | ❌ Not implemented — `reminders.py` is a TODO stub |
+| Reminders | ✅ Working (uses Azure OpenAI if `AZURE_OPENAI_API_KEY` is set, integrated with MS teams for notification and reminder) |
 | Dashboard | ✅ Working — Flask + SQLite, shows tasks with owner/due date/status |
 
 This gap pattern is intentional so you can run the validator agent against a **realistic partial submission** rather than a perfect one.
