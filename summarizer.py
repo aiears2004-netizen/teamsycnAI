@@ -18,27 +18,7 @@ def _rule_based_summary(turns):
     return "Meeting Summary (local fallback, no LLM configured):\n" + "\n".join(bullets)
 
 
-# def _azure_openai_summary(turns):
-#     import requests
 
-#     endpoint = os.environ.get("AZURE_OPENAI_ENDPOINT")
-#     api_key = os.environ.get("AZURE_OPENAI_API_KEY")
-#     deployment = os.environ.get("AZURE_OPENAI_DEPLOYMENT", "gpt-4o-mini")
-
-#     transcript_text = "\n".join(f"{t['speaker']}: {t['text']}" for t in turns)
-#     prompt = (
-#         "Summarize the following meeting transcript in 4-6 concise bullet points, "
-#         "covering decisions made and topics discussed. Do not include action items "
-#         "(those are handled separately).\n\n" + transcript_text
-#     )
-
-#     url = f"{endpoint}openai/deployments/{deployment}/chat/completions?api-version=2024-02-15-preview"
-#     headers = {"api-key": api_key, "Content-Type": "application/json"}
-#     payload = {"messages": [{"role": "user", "content": prompt}], "max_tokens": 400}
-
-#     resp = requests.post(url, headers=headers, json=payload, timeout=20)
-#     resp.raise_for_status()
-#     return resp.json()["choices"][0]["message"]["content"]
 
 
 def summarize(turns):
